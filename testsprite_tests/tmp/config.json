@@ -1,0 +1,23 @@
+{
+  "status": "init",
+  "scope": "codebase",
+  "type": "frontend",
+  "localEndpoint": "http://localhost:5173/",
+  "serverPort": 55360,
+  "executionArgs": {
+    "projectName": "Antigravity_Website",
+    "projectPath": "c:\\Users\\spsu\\Downloads\\Antigravity_Website",
+    "testIds": [
+      "TC-001",
+      "TC-002",
+      "TC-003",
+      "TC-004",
+      "TC-005"
+    ],
+    "additionalInstruction": "Run only the 5 test cases already in the test plan file. Dev server is running on port 5173.",
+    "serverMode": "development",
+    "envs": {
+      "API_KEY": "sk-user-BqmSMXv_FrI3wxMuTcKUv5pKfIwBePZJwDGprwz1ge8jA07u_OAWbHt00kzd6ws4YcJqDwP7EVlzQSeaMWHhB2IB4tEhCyAPzVsFibJVFtHo1d8RY17YDzuHOKbfywwBzVI"
+    }
+  }
+}

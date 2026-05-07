@@ -1,0 +1,99 @@
+version: "2"
+type: frontend
+tech_stack:
+  - React
+  - Vite
+  - react-router-dom
+  - lucide-react
+  - Vanilla CSS
+routes:
+  - path: /
+    file: src/pages/Dashboard.jsx
+    auth_required: false
+    description: Main dashboard with KPI stats and overview
+  - path: /contacts
+    file: src/pages/Contacts.jsx
+    auth_required: false
+    description: Contact list with search and filter
+  - path: /pipeline
+    file: src/pages/Pipeline.jsx
+    auth_required: false
+    description: Kanban pipeline board for deal stages
+  - path: /copilot
+    file: src/pages/Copilot.jsx
+    auth_required: false
+    description: AI Co-pilot chat interface
+  - path: /settings
+    file: src/App.jsx
+    auth_required: false
+    description: Settings placeholder page
+  - path: /help
+    file: src/App.jsx
+    auth_required: false
+    description: Help center placeholder page
+features:
+  - name: Sidebar Navigation
+    description: Fixed sidebar with nav links to all main pages, active link highlighting
+    files:
+      - src/components/Sidebar.jsx
+      - src/components/Layout.jsx
+    entry_route: /
+    user_interactions:
+      - Click Dashboard link in sidebar to navigate to /
+      - Click Contacts link in sidebar to navigate to /contacts
+      - Click Pipeline link in sidebar to navigate to /pipeline
+      - Click AI Co-pilot link in sidebar to navigate to /copilot
+      - Click Settings link in sidebar to navigate to /settings
+      - Click Help link in sidebar to navigate to /help
+      - Observe active link is visually highlighted
+    api_calls: []
+    auth_required: false
+  - name: Dashboard
+    description: Overview page showing KPI cards and summary stats
+    files:
+      - src/pages/Dashboard.jsx
+    entry_route: /
+    user_interactions:
+      - View KPI stat cards on load
+      - See dashboard heading and summary information
+    api_calls: []
+    auth_required: false
+  - name: Contacts Management
+    description: Contact list with search input and filter controls
+    files:
+      - src/pages/Contacts.jsx
+    entry_route: /contacts
+    user_interactions:
+      - View list of contacts
+      - Type in search input to filter contacts
+      - Click on a contact card to see details
+    api_calls: []
+    auth_required: false
+  - name: Pipeline Kanban Board
+    description: Deal pipeline with Kanban columns representing stages
+    files:
+      - src/pages/Pipeline.jsx
+    entry_route: /pipeline
+    user_interactions:
+      - View pipeline columns (stages)
+      - See deal cards in each column
+    api_calls: []
+    auth_required: false
+  - name: AI Co-pilot Chat
+    description: Chat interface to interact with AI assistant
+    files:
+      - src/pages/Copilot.jsx
+    entry_route: /copilot
+    user_interactions:
+      - Type a message in the chat input
+      - Click Send or press Enter to submit message
+      - See AI response in the chat window
+    api_calls: []
+    auth_required: false
+known_limitations:
+  - issue: Settings and Help pages are placeholder stubs, no real content
+    location: src/App.jsx
+    impact: No actual configuration or help content available
+  - issue: All data is static/mock, no real backend API
+    location: src/pages/
+    impact: Data changes are not persisted

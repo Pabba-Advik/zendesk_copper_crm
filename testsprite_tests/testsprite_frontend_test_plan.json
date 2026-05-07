@@ -1,0 +1,214 @@
+{
+  "version": "2",
+  "type": "frontend",
+  "projectName": "Antigravity_Website",
+  "baseUrl": "http://localhost:5173",
+  "tests": [
+    {
+      "id": "TC-001",
+      "name": "Dashboard Page Loads with KPI Stats",
+      "priority": "high",
+      "description": "Verify that the Dashboard page loads correctly and displays KPI stat cards",
+      "route": "/",
+      "auth_required": false,
+      "steps": [
+        {
+          "action": "navigate",
+          "url": "http://localhost:5173/"
+        },
+        {
+          "action": "waitForSelector",
+          "selector": ".sidebar",
+          "description": "Sidebar is visible"
+        },
+        {
+          "action": "assertVisible",
+          "selector": ".main-content",
+          "description": "Main content area is rendered"
+        },
+        {
+          "action": "assertText",
+          "selector": "h1",
+          "contains": "Dashboard",
+          "description": "Dashboard heading is present"
+        },
+        {
+          "action": "assertExists",
+          "selector": ".card",
+          "description": "KPI stat cards are displayed"
+        }
+      ],
+      "expected_result": "Dashboard loads with heading and KPI cards visible"
+    },
+    {
+      "id": "TC-002",
+      "name": "Sidebar Navigation Between Pages",
+      "priority": "high",
+      "description": "Verify that clicking sidebar links navigates to the correct pages and highlights active link",
+      "route": "/",
+      "auth_required": false,
+      "steps": [
+        {
+          "action": "navigate",
+          "url": "http://localhost:5173/"
+        },
+        {
+          "action": "assertVisible",
+          "selector": ".sidebar",
+          "description": "Sidebar is visible"
+        },
+        {
+          "action": "click",
+          "selector": "a[href='/contacts']",
+          "description": "Click Contacts link"
+        },
+        {
+          "action": "assertUrl",
+          "contains": "/contacts",
+          "description": "URL changed to /contacts"
+        },
+        {
+          "action": "click",
+          "selector": "a[href='/pipeline']",
+          "description": "Click Pipeline link"
+        },
+        {
+          "action": "assertUrl",
+          "contains": "/pipeline",
+          "description": "URL changed to /pipeline"
+        },
+        {
+          "action": "click",
+          "selector": "a[href='/copilot']",
+          "description": "Click AI Co-pilot link"
+        },
+        {
+          "action": "assertUrl",
+          "contains": "/copilot",
+          "description": "URL changed to /copilot"
+        }
+      ],
+      "expected_result": "All sidebar navigation links route to correct pages"
+    },
+    {
+      "id": "TC-003",
+      "name": "Contacts Page Displays List and Search Works",
+      "priority": "high",
+      "description": "Verify the Contacts page renders contact cards and search input filters results",
+      "route": "/contacts",
+      "auth_required": false,
+      "steps": [
+        {
+          "action": "navigate",
+          "url": "http://localhost:5173/contacts"
+        },
+        {
+          "action": "assertVisible",
+          "selector": ".main-content",
+          "description": "Contacts page content area is visible"
+        },
+        {
+          "action": "assertText",
+          "selector": "h1",
+          "contains": "Contact",
+          "description": "Contacts heading is present"
+        },
+        {
+          "action": "assertExists",
+          "selector": "input[type='text'], input[placeholder]",
+          "description": "Search input field is present"
+        },
+        {
+          "action": "type",
+          "selector": "input[type='text'], input[placeholder]",
+          "value": "Alice",
+          "description": "Type search query"
+        },
+        {
+          "action": "assertExists",
+          "selector": ".card",
+          "description": "Filtered contact cards are still shown"
+        }
+      ],
+      "expected_result": "Contacts page shows list of contacts and search filters them"
+    },
+    {
+      "id": "TC-004",
+      "name": "Pipeline Page Shows Kanban Columns",
+      "priority": "high",
+      "description": "Verify the Pipeline page renders Kanban columns with deal stages",
+      "route": "/pipeline",
+      "auth_required": false,
+      "steps": [
+        {
+          "action": "navigate",
+          "url": "http://localhost:5173/pipeline"
+        },
+        {
+          "action": "assertVisible",
+          "selector": ".main-content",
+          "description": "Pipeline page content is visible"
+        },
+        {
+          "action": "assertText",
+          "selector": "h1",
+          "contains": "Pipeline",
+          "description": "Pipeline heading is present"
+        },
+        {
+          "action": "assertExists",
+          "selector": ".card",
+          "description": "Pipeline deal cards are rendered"
+        }
+      ],
+      "expected_result": "Pipeline page renders Kanban board with stage columns and deal cards"
+    },
+    {
+      "id": "TC-005",
+      "name": "AI Co-pilot Chat Interface Accepts Input",
+      "priority": "high",
+      "description": "Verify the AI Co-pilot page loads a chat interface where users can type and send messages",
+      "route": "/copilot",
+      "auth_required": false,
+      "steps": [
+        {
+          "action": "navigate",
+          "url": "http://localhost:5173/copilot"
+        },
+        {
+          "action": "assertVisible",
+          "selector": ".main-content",
+          "description": "Co-pilot page content is visible"
+        },
+        {
+          "action": "assertText",
+          "selector": "h1",
+          "contains": "Co-pilot",
+          "description": "Co-pilot heading is present"
+        },
+        {
+          "action": "assertExists",
+          "selector": "input, textarea",
+          "description": "Chat input field is present"
+        },
+        {
+          "action": "type",
+          "selector": "input, textarea",
+          "value": "Hello AI!",
+          "description": "Type a chat message"
+        },
+        {
+          "action": "assertExists",
+          "selector": "button",
+          "description": "Send button is present"
+        },
+        {
+          "action": "click",
+          "selector": "button[type='submit'], button",
+          "description": "Click send button"
+        }
+      ],
+      "expected_result": "Co-pilot chat UI accepts message input and has a send button"
+    }
+  ]
+}
